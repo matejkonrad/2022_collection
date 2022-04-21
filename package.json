@@ -1,0 +1,20 @@
+{
+  "name": "collection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "p5 server",
+    "generate": "p5 g"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint-config-p5js": "^1.1.0"
+  },
+  "dependencies": {
+    "ccapture.js": "^1.1.0",
+    "p5": "^1.4.1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "collection",
+  "projects": [
+    "0001_drawing_text",
+    "0002_second_text",
+    "0003_5_letter_b",
+    "0003_5_letter_c",
+    "0003_charplayin",
+    "0004_charplayin",
+    "0005_linesies",
+    "0006_shapes",
+    "0007_drawin"
+  ]
+}
