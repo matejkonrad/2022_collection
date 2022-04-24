@@ -1,12 +1,11 @@
 let capturing = false;
 const capturer = new CCapture({
   format: 'png',
-  framerate: 60,
+  framerate: 120,
 });
 
 const palette = ['#fa448c', '#fec859', '#43b5a0', '#491d88', '#331a38'];
 
-// const palette = ['#7882A4', '#C0A080', '#D1D1D1', '#EFEFEF']
 function Circlito() {
   let r = 200;
   let angle = 0;
@@ -58,7 +57,6 @@ function setup() {
 }
 
 function draw() {
-
   background(0);
   if (frameCount % 1000 === 0) {
     background(0);
@@ -74,5 +72,20 @@ function draw() {
     // scale(scaly + i * 0.05)
     // translate(100, 0);
     circlito.draw();
+  }
+
+  capturer.capture(document.getElementById('defaultCanvas0'));
+}
+
+function keyPressed() {
+  if (keyCode === ENTER) {
+    if (!capturing) {
+      capturer.start();
+      capturing = true;
+    } else {
+      capturer.stop();
+      capturer.save();
+      capturing = false;
+    }
   }
 }

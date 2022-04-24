@@ -45,8 +45,8 @@ function draw() {
   capturer.capture(document.getElementById('defaultCanvas0'));
 }
 
-function keyPressed() {
-  if (keyCode === ENTER) {
+function keypressed() {
+  if (keycode === enter) {
     if (!capturing) {
       capturer.start();
       capturing = true;
