@@ -9,6 +9,9 @@
     "0004_charplayin",
     "0005_linesies",
     "0006_shapes",
-    "0007_drawin"
+    "0007_drawin",
+    "0008_drawing_circ2",
+    "0009_gaussian",
+    "0010_curves"
   ]
 }

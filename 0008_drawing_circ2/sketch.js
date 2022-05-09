@@ -6,11 +6,9 @@ const capturer = new CCapture({
 
 const palette = ['#fa448c', '#fec859', '#43b5a0', '#491d88', '#331a38'];
 let inc = 0;
-const speed = 0.005;
+const speed = 0.01;
 const rotationSpeed = 0.5;
 let theta = 0;
-let mappyNoiseTo = 1;
-const mappyIncrement = 0.3;
 
 function Circlito() {
   let r = 200;
@@ -26,26 +24,23 @@ function Circlito() {
           noise(inc + i + sin(angle), inc + i + cos(angle)),
           0,
           1,
-          -mappyNoiseTo,
-          mappyNoiseTo
+          -200,
+          200
         );
         const noiseyY = map(
           noise(inc + i + cos(angle), inc + i + sin(angle)),
           0,
           1,
-          -mappyNoiseTo,
-          mappyNoiseTo
+          -200,
+          200
         );
         const x = r * sin(angle) + noiseyX;
         const y = r * cos(angle) + noiseyY;
 
         const z = r * sin(angle) + noiseyY;
 
-        // const randomIndex = map(i, 0, numSteps + 1, 0, 4);
-        // c
-        // const colory = palette[int(randomIndex)];
-        const noiseColor = map(noise(inc + i), 0, 1, 0, 360);
-        const colory = color(noiseColor, noiseColor, 300);
+        const randomIndex = map(i, 0, numSteps + 1, 0, 4);
+        const colory = palette[int(randomIndex)];
 
         stroke(colory);
         fill(colory);
@@ -62,23 +57,17 @@ let scaly = 1;
 function setup() {
   createCanvas(900, 900, WEBGL);
   frameRate(60);
-  colorMode(HSB, 360);
 
   circlito = Circlito();
 }
 
 function draw() {
-  if (frameCount === 1) {
-    console.log('starting');
-    capturer.start();
-    capturing = true;
-  }
   background(0);
 
   noFill();
   strokeWeight(2);
 
-  // rotateY(radians(theta));
+  rotateY(radians(theta));
   theta += rotationSpeed;
 
   for (let i = 0; i < 1000; i++) {
@@ -86,7 +75,6 @@ function draw() {
   }
   inc += speed;
 
-  mappyNoiseTo += mappyIncrement;
   capturer.capture(document.getElementById('defaultCanvas0'));
 }
 
