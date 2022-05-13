@@ -1,5 +1,12 @@
+let capturing = false;
+const capturer = new CCapture({
+  format: 'png',
+  framerate: 2,
+});
+
 const elementsX = 15;
 const elementsY = 15;
+const borderWidth = 50;
 
 function Curve(initX, initY, initMaxWidth, initMaxHeight) {
   let x = initX;
@@ -100,10 +107,21 @@ function Curve(initX, initY, initMaxWidth, initMaxHeight) {
 }
 const curves = [];
 
+const addBorderTwo = () => {
+  push();
+  fill(0);
+  translate(0, 0);
+  rect(0, 0, width, borderWidth);
+  rect(width - borderWidth, 0, borderWidth, height);
+  rect(0, 0, borderWidth, height);
+  rect(0, height - borderWidth, width, borderWidth);
+  pop();
+};
+
 function setup() {
   createCanvas(900, 900);
 
-	frameRate(1)
+  frameRate(1);
   noFill();
   const maxWidth = width / elementsX;
   const maxHeight = height / elementsY;
@@ -117,6 +135,24 @@ function setup() {
 }
 
 function draw() {
+  // translate(30, 40)height / 4
+  // scale(0.9)
   background(0);
   curves.forEach((curve) => curve.paint());
+
+  addBorderTwo();
+  capturer.capture(document.getElementById('defaultCanvas0'));
+}
+
+function keyPressed() {
+  if (keyCode === ENTER) {
+    if (!capturing) {
+      capturer.start();
+      capturing = true;
+    } else {
+      capturer.stop();
+      capturer.save();
+      capturing = false;
+    }
+  }
 }
