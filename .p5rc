@@ -12,6 +12,8 @@
     "0007_drawin",
     "0008_drawing_circ2",
     "0009_gaussian",
-    "0010_curves"
+    "0010_curves",
+    "0011_perliner",
+    "0012_vecy"
   ]
 }
