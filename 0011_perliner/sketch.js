@@ -40,7 +40,6 @@ const getColor = (noiseVal) => {
 };
 
 function draw() {
-  console.log({ frameCount });
   background(50);
   noLoop();
 
@@ -71,5 +70,4 @@ function draw() {
     }
     yoff += 0.005;
   }
-  save('perliner.png');
 }
