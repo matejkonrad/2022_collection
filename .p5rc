@@ -15,6 +15,7 @@
     "0010_curves",
     "0011_perliner",
     "0012_vecy",
-    "0013_cam_concept"
+    "0013_cam_concept",
+    "0014_cam"
   ]
 }
