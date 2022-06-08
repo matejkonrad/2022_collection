@@ -21,7 +21,6 @@ const palletes = {
 
 const currentPallete = palletes.high_neon;
 const getColor = (noiseVal) => {
-  // console.log(noiseVal);
   if (noiseVal > 0.8 && noiseVal >= 0.8) {
     return color(currentPallete[4]);
   }
@@ -41,20 +40,17 @@ const getColor = (noiseVal) => {
 };
 
 function setup() {
-	if (windowHeight < windowWidth) {
-		createCanvas(round(windowHeight * proportion), windowHeight);
-		scaleToCam = width/camWidth;
-	} else {
-		createCanvas(windowWidth, round(windowHeight / proportion));
-		scaleToCam = height/camHeight;
-	}
+	createCanvas(windowWidth, round(windowHeight));
+	scaleToCam = height/camHeight;
 	
+	createCanvas(windowWidth, windowHeight)
 	textAlign(CENTER, CENTER);
 	textSize(sampleSize);
 	textFont("monotype");
 	
 	camera = createCapture(VIDEO);
 	camera.size(camWidth, camHeight);
+	// camera.size(windowWidth, windowHeight);
 	camera.hide();
   
     colorMode(HSB, 255);
@@ -76,10 +72,9 @@ function draw() {
 			const b = camera.pixels[i + 2];
 			const brighty = brightness(color(r,g,b));
 
-			const mappy = floor(map(brighty, 0, 100, 5, 0));
+			const mappy = floor(map(brighty, 0,250, 5, 0));
 			const charry = chars[mappy];
-			// const noisey = noise(xoff, yoff);
-			fill(0, 10);
+			// fill(0);
 			text(charry, x, y);
 			yoff += 0.1
 		}
