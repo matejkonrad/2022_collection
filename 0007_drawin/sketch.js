@@ -36,8 +36,8 @@ function Circlito() {
           -mappyNoiseTo,
           mappyNoiseTo
         );
-        const x = r * sin(angle) + noiseyX;
-        const y = r * cos(angle) + noiseyY;
+        const x = r * sin(angle) + noiseyx;
+        const y = r * cos(angle) + noiseyy;
 
         const z = r * sin(angle) + noiseyY;
 
