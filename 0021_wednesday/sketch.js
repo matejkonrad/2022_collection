@@ -1,5 +1,5 @@
 let writers = [];
-const numWriters = 10;
+const numWriters = 100;
 
 function Writero(_startX, _startY) {
   const position = createVector(_startX, _startY);
@@ -34,10 +34,19 @@ function Writero(_startX, _startY) {
 
   const draw = () => {
     fill(clr);
+    const paintDis = 1;
     for (let i = 1; i <= numInsiders; i++) {
       circle(position.x, position.y, 5);
-      circle(position.x - i * 10, position.y - i * 10, 3);
-      circle(position.x + i * 10, position.y + i * 10, 10);
+      circle(
+        position.x - i * random(-paintDis, paintDis),
+        position.y - i * random(-paintDis, paintDis),
+        3
+      );
+      circle(
+        position.x + i * random(-paintDis, paintDis),
+        position.y + i * random(-paintDis, paintDis),
+        10
+      );
     }
     position.add(direction);
 
