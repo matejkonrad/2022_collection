@@ -12,8 +12,9 @@ function draw() {
   background(0, 0.01);
   //image(capture, 0, 0, 900, 900);
   filter(GRAY);
-  let tilesX = 50;
-  let tilesY = 50;
+  capture.loadPixels()
+let tilesX = 10;
+  let tilesY = 10;
   let tileW = width / tilesX;
   let tileH = height / tilesY;
   noStroke();
