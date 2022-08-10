@@ -1,11 +1,11 @@
 let writers = [];
-const numWriters = 100;
+const numWriters = 50;
 
 function Writero(_startX, _startY) {
   const position = createVector(_startX, _startY);
   const clr = random(colors);
 
-  const numInsiders = 10;
+  const numInsiders = 20;
 
   const getDirection = (x, y) => {
     // top left => bottom right
@@ -29,22 +29,24 @@ function Writero(_startX, _startY) {
     }
   };
 
-  const direction = getDirection(position.x, position.y).normalize().mult(2);
-  const dirpl = false;
+  const direction = getDirection(position.x, position.y)
+    .sub(position)
+    .normalize()
+    .mult(3);
 
   const draw = () => {
     fill(clr);
-    const paintDis = 1;
+    const paintDis = random(3, 5);
     for (let i = 1; i <= numInsiders; i++) {
       circle(position.x, position.y, 5);
       circle(
-        position.x - i * random(-paintDis, paintDis),
-        position.y - i * random(-paintDis, paintDis),
+        position.x - i * paintDis, //random(-paintDis, paintDis),
+        position.y - i * paintDis, //random(-paintDis, paintDis),
         3
       );
       circle(
-        position.x + i * random(-paintDis, paintDis),
-        position.y + i * random(-paintDis, paintDis),
+        position.x + i * paintDis, //random(-paintDis, paintDis),
+        position.y + i * paintDis, //random(-paintDis, paintDis),
         10
       );
     }
